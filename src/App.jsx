@@ -4,7 +4,7 @@ function App() {
 	return (
 		<>
 			<div>
-				<Paginator pageNumbers={5} />
+				<Paginator pageNumber={5} />
 			</div>
 		</>
 	);
