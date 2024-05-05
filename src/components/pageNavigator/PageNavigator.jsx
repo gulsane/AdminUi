@@ -45,14 +45,14 @@ const PageNavigator = ({ pageNumber }) => {
 		<div className="container">
 			<button
 				className="button first-page"
-				disabled={selectedPageIndex === 1 ? true : false}
+				disabled={selectedPageIndex === 1 || pageNumber === 0 ? true : false}
 				onClick={() => handlePageNavigator("first-page")}
 			>
 				<i className="fa-solid fa-angles-left"></i>
 			</button>
 			<button
 				className="button previous-page"
-				disabled={selectedPageIndex === 1 ? true : false}
+				disabled={selectedPageIndex === 1 || pageNumber === 0 ? true : false}
 				onClick={() => handlePageNavigator("previous-page")}
 			>
 				<i className="fa-solid fa-angle-left"></i>
@@ -71,14 +71,18 @@ const PageNavigator = ({ pageNumber }) => {
 
 			<button
 				className="button last-page"
-				disabled={selectedPageIndex === pageNumber ? true : false}
+				disabled={
+					selectedPageIndex === pageNumber || pageNumber === 0 ? true : false
+				}
 				onClick={() => handlePageNavigator("next-page")}
 			>
 				<i className="fa-solid fa-angle-right"></i>
 			</button>
 			<button
 				className="button next-page"
-				disabled={selectedPageIndex === pageNumber ? true : false}
+				disabled={
+					selectedPageIndex === pageNumber || pageNumber === 0 ? true : false
+				}
 				onClick={() => handlePageNavigator("last-page")}
 			>
 				<i className="fa-solid fa-angles-right"></i>
