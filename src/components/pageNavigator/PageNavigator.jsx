@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./index.css";
 
-const Paginator = ({ pageNumber }) => {
+const PageNavigator = ({ pageNumber }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 
 	const pageIndexes = [];
@@ -15,7 +15,7 @@ const Paginator = ({ pageNumber }) => {
 		setSelectedPageIndex(index);
 	};
 
-	const handlePageNavitor = (navigatorSpecifier) => {
+	const handlePageNavigator = (navigatorSpecifier) => {
 		switch (navigatorSpecifier) {
 			case "previous-page":
 				if (selectedPageIndex > 1) {
@@ -46,14 +46,14 @@ const Paginator = ({ pageNumber }) => {
 			<button
 				className="button first-page"
 				disabled={selectedPageIndex === 1 ? true : false}
-				onClick={() => handlePageNavitor("first-page")}
+				onClick={() => handlePageNavigator("first-page")}
 			>
 				<i className="fa-solid fa-angles-left"></i>
 			</button>
 			<button
 				className="button previous-page"
 				disabled={selectedPageIndex === 1 ? true : false}
-				onClick={() => handlePageNavitor("previous-page")}
+				onClick={() => handlePageNavigator("previous-page")}
 			>
 				<i className="fa-solid fa-angle-left"></i>
 			</button>
@@ -72,14 +72,14 @@ const Paginator = ({ pageNumber }) => {
 			<button
 				className="button last-page"
 				disabled={selectedPageIndex === pageNumber ? true : false}
-				onClick={() => handlePageNavitor("next-page")}
+				onClick={() => handlePageNavigator("next-page")}
 			>
 				<i className="fa-solid fa-angle-right"></i>
 			</button>
 			<button
 				className="button next-page"
 				disabled={selectedPageIndex === pageNumber ? true : false}
-				onClick={() => handlePageNavitor("last-page")}
+				onClick={() => handlePageNavigator("last-page")}
 			>
 				<i className="fa-solid fa-angles-right"></i>
 			</button>
@@ -87,4 +87,4 @@ const Paginator = ({ pageNumber }) => {
 	);
 };
 
-export default Paginator;
+export default PageNavigator;
