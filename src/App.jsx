@@ -1,7 +1,11 @@
+import Paginator from "./components/paginator/Paginator";
+
 function App() {
 	return (
 		<>
-			<div>Ui Dashboard</div>
+			<div>
+				<Paginator />
+			</div>
 		</>
 	);
 }

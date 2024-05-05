@@ -1,0 +1,58 @@
+.container,
+.button,
+.links,
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    padding: 20px;
+    border-radius: 12px;
+    column-gap: 12px;
+    background-color: #fff;
+}
+
+.button {
+    border: none;
+}
+
+.button:disabled {
+    background: #e6e3e3;
+    color: #b9b4b4;
+    border: none;
+    pointer-events: none;
+}
+
+.button,
+.link {
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    color: white;
+    border-radius: 50%;
+    border: 1px solid #4070fa;
+    background-color: #4070fa;
+    cursor: pointer;
+}
+
+.link.selected {
+    background-color: white;
+    color: #4070fa;
+}
+
+.links {
+    column-gap: 12px;
+}
+
+.link {
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.button:not(:disabled):hover,
+.links :hover {
+    background-color: #fff;
+    color: #4070fa;
+}
