@@ -5,6 +5,10 @@ import "./index.css";
 const Paginator = ({ pageNumbers }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 
+	const handlePageIndex = (index) => {
+		setSelectedPageIndex(index);
+	};
+
 	const pageIndexes = [];
 	for (let index = 1; index <= pageNumbers; index++) {
 		pageIndexes.push(index);
@@ -29,6 +33,7 @@ const Paginator = ({ pageNumbers }) => {
 					<button
 						className={`link ${selectedPageIndex === index ? "selected" : ""}`}
 						key={index}
+						onClick={() => handlePageIndex(index)}
 					>
 						{index}
 					</button>
