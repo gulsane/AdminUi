@@ -1,16 +1,14 @@
-import { useState } from "react";
-
 import "./index.css";
 
 const PageNavigator = ({
-	pageNumber,
+	pages,
 	selectedPageIndex,
 	handlePageIndex,
 	handlePageNavigator,
 }) => {
 	const pageIndexes = [];
 
-	for (let index = 1; index <= pageNumber; index++) {
+	for (let index = 1; index <= pages; index++) {
 		pageIndexes.push(index);
 	}
 
@@ -18,14 +16,14 @@ const PageNavigator = ({
 		<div className="container">
 			<button
 				className="button first-page"
-				disabled={selectedPageIndex === 1 || pageNumber === 0 ? true : false}
+				disabled={selectedPageIndex === 1 || pages === 0 ? true : false}
 				onClick={() => handlePageNavigator("first-page")}
 			>
 				<i className="fa-solid fa-angles-left"></i>
 			</button>
 			<button
 				className="button previous-page"
-				disabled={selectedPageIndex === 1 || pageNumber === 0 ? true : false}
+				disabled={selectedPageIndex === 1 || pages === 0 ? true : false}
 				onClick={() => handlePageNavigator("previous-page")}
 			>
 				<i className="fa-solid fa-angle-left"></i>
@@ -44,18 +42,14 @@ const PageNavigator = ({
 
 			<button
 				className="button last-page"
-				disabled={
-					selectedPageIndex === pageNumber || pageNumber === 0 ? true : false
-				}
+				disabled={selectedPageIndex === pages || pages === 0 ? true : false}
 				onClick={() => handlePageNavigator("next-page")}
 			>
 				<i className="fa-solid fa-angle-right"></i>
 			</button>
 			<button
 				className="button next-page"
-				disabled={
-					selectedPageIndex === pageNumber || pageNumber === 0 ? true : false
-				}
+				disabled={selectedPageIndex === pages || pages === 0 ? true : false}
 				onClick={() => handlePageNavigator("last-page")}
 			>
 				<i className="fa-solid fa-angles-right"></i>
