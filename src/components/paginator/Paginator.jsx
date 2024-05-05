@@ -1,34 +1,49 @@
+import { useState } from "react";
+
 import "./index.css";
-const Paginator = () => {
+
+const Paginator = ({ pageNumbers }) => {
+	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
+
+	const pageIndexes = [];
+	for (let index = 1; index <= pageNumbers; index++) {
+		pageIndexes.push(index);
+	}
+
 	return (
 		<div className="container">
-			<button className="button" disabled>
+			<button
+				className="button first-page"
+				disabled={selectedPageIndex === 1 ? true : false}
+			>
 				<i className="fa-solid fa-angles-left"></i>
 			</button>
-			<button className="button" disabled>
+			<button
+				className="button previous-page"
+				disabled={selectedPageIndex === 1 ? true : false}
+			>
 				<i className="fa-solid fa-angle-left"></i>
 			</button>
 			<div className="links">
-				<a href="#" className="link selected">
-					1
-				</a>
-				<a href="#" className="link">
-					2
-				</a>
-				<a href="#" className="link">
-					3
-				</a>
-				<a href="#" className="link">
-					4
-				</a>
-				<a href="#" className="link">
-					5
-				</a>
+				{pageIndexes.map((index) => (
+					<button
+						className={`link ${selectedPageIndex === index ? "selected" : ""}`}
+						key={index}
+					>
+						{index}
+					</button>
+				))}
 			</div>
-			<button className="button">
+			<button
+				className="button next-page"
+				disabled={selectedPageIndex === pageNumbers ? true : false}
+			>
 				<i className="fa-solid fa-angles-right"></i>
 			</button>
-			<button className="button">
+			<button
+				className="button last-page"
+				disabled={selectedPageIndex === pageNumbers ? true : false}
+			>
 				<i className="fa-solid fa-angle-right"></i>
 			</button>
 		</div>
