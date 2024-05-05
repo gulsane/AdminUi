@@ -1,0 +1,45 @@
+.paginator {
+    display: flex;
+    width: 70vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 0;
+    background-color: white;
+}
+
+.table {
+    table-layout: fixed;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.table td,
+.table th {
+    text-align: initial;
+    padding: 8px;
+    border-bottom: 1px solid gray;
+}
+
+.table th {
+    font-size: 14px;
+}
+
+.table td {
+    font-size: 14px;
+    color: #1f1e1e;
+}
+
+.table tr.selected {
+    background: #f2f0f0;
+}
+
+td input,
+th input {
+    margin-left: 20px;
+}
