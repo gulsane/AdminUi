@@ -1,10 +1,12 @@
 import PageNavigator from "./components/pageNavigator/PageNavigator";
 
+import Paginator from "./components/paginator/Paginator";
+
 function App() {
 	return (
 		<>
 			<div>
-				<PageNavigator pageNumber={3} />
+				<Paginator />
 			</div>
 		</>
 	);
