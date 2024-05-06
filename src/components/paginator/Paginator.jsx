@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import PageNavigator from "../pageNavigator/PageNavigator";
+import Input from "../input/Input";
 import "./index.css";
 
 const RowGenerator = ({ rowDetails }) => {
+	const nameRef = useRef();
+	const emailRef = useRef();
+	const roleRef = useRef();
+
 	return (
-		<tr key={rowDetails.id}>
+		<tr>
 			<td>
 				<input type="checkbox" />
 			</td>
 			<td>
-				<input type="text" value={rowDetails.name} />
+				<Input type="text" value={rowDetails.name} ref={nameRef} />
 			</td>
 			<td>
-				<input type="text" value={rowDetails.email} />
+				<Input type="text" value={rowDetails.email} ref={emailRef} />
 			</td>
 			<td>
-				<input type="text" value={rowDetails.role} />
+				<Input type="text" value={rowDetails.role} ref={roleRef} />
 			</td>
 			<td>
 				<button>
@@ -85,7 +90,7 @@ const Paginator = ({ items = [], itemsPerPage = 10 }) => {
 					</thead>
 					<tbody>
 						{showableItems.map((item) => (
-							<RowGenerator rowDetails={item} />
+							<RowGenerator rowDetails={item} key={item.id} />
 						))}
 					</tbody>
 				</table>
