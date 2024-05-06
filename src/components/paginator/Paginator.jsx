@@ -2,6 +2,36 @@ import { useState } from "react";
 import PageNavigator from "../pageNavigator/PageNavigator";
 import "./index.css";
 
+const RowGenerator = ({ rowDetails }) => {
+	return (
+		<tr key={rowDetails.id}>
+			<td>
+				<input type="checkbox" />
+			</td>
+			<td>
+				<input type="text" value={rowDetails.name} />
+			</td>
+			<td>
+				<input type="text" value={rowDetails.email} />
+			</td>
+			<td>
+				<input type="text" value={rowDetails.role} />
+			</td>
+			<td>
+				<button>
+					<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+				</button>
+				<button>
+					<i className="fa fa-floppy-o" aria-hidden="true"></i>
+				</button>
+				<button>
+					<i className="fa fa-trash-o" aria-hidden="true"></i>
+				</button>
+			</td>
+		</tr>
+	);
+};
+
 const Paginator = ({ items = [], itemsPerPage = 10 }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 	const pages = Math.ceil(items.length / itemsPerPage);
@@ -55,25 +85,7 @@ const Paginator = ({ items = [], itemsPerPage = 10 }) => {
 					</thead>
 					<tbody>
 						{showableItems.map((item) => (
-							<tr key={item.id}>
-								<td>
-									<input type="checkbox" />
-								</td>
-								<td>{item.name}</td>
-								<td>{item.email}</td>
-								<td>{item.role}</td>
-								<td>
-									<button>
-										<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-									</button>
-									<button>
-										<i className="fa fa-floppy-o" aria-hidden="true"></i>
-									</button>
-									<button>
-										<i className="fa fa-trash-o" aria-hidden="true"></i>
-									</button>
-								</td>
-							</tr>
+							<RowGenerator rowDetails={item} />
 						))}
 					</tbody>
 				</table>
