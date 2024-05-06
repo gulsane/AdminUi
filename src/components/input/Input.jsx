@@ -27,7 +27,6 @@ const Input = forwardRef(({ type, value, ...props }, ref) => {
 			value={fieldValue}
 			{...props}
 			onChange={handleChange}
-			on
 		/>
 	);
 });
