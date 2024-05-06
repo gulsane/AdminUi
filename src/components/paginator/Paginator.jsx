@@ -67,6 +67,9 @@ const Paginator = ({ items = [], itemsPerPage = 10 }) => {
 										<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
 									</button>
 									<button>
+										<i className="fa fa-floppy-o" aria-hidden="true"></i>
+									</button>
+									<button>
 										<i className="fa fa-trash-o" aria-hidden="true"></i>
 									</button>
 								</td>

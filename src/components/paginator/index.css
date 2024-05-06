@@ -9,7 +9,7 @@
 }
 
 .table {
-    table-layout: fixed;
+    table-layout: auto;
     font-size: 16px;
     font-weight: normal;
     border: none;
@@ -39,7 +39,13 @@
     background: #f2f0f0;
 }
 
-td input,
-th input {
+td input[type="checkbox"],
+th input[type="checkbox"] {
     margin-left: 20px;
+}
+
+td input {
+    border: none;
+    text-decoration: none;
+    outline: none;
 }
