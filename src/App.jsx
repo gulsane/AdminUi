@@ -11,10 +11,9 @@ function App() {
 		setDetails(Array.from([...details]));
 	};
 
-	const handleDelete = (id) => {
-		setDetails((preDetails) =>
-			Array.from(preDetails.filter((detail) => detail.id !== id))
-		);
+	const handleDelete = (...ids) => {
+		const newDetails = details.filter((detail) => !ids.includes(detail.id));
+		setDetails(() => newDetails);
 	};
 
 	return (
