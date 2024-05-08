@@ -38,13 +38,28 @@ const RowGenerator = ({
 				/>
 			</td>
 			<td>
-				<Input type="text" value={rowDetails.name} ref={nameRef} />
+				<Input
+					type="text"
+					value={rowDetails.name}
+					ref={nameRef}
+					disabled={!editing}
+				/>
 			</td>
 			<td>
-				<Input type="text" value={rowDetails.email} ref={emailRef} />
+				<Input
+					type="text"
+					value={rowDetails.email}
+					ref={emailRef}
+					disabled={!editing}
+				/>
 			</td>
 			<td>
-				<Input type="text" value={rowDetails.role} ref={roleRef} />
+				<Input
+					type="text"
+					value={rowDetails.role}
+					ref={roleRef}
+					disabled={!editing}
+				/>
 			</td>
 			<td>
 				{editing ? (
