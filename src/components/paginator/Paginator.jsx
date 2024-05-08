@@ -106,8 +106,8 @@ const Paginator = ({
 	};
 
 	const handleSelectAll = () => {
-		if (selectedItems.length < items.length) {
-			setSelectedItems(() => Array.from(items.map((item) => item.id)));
+		if (selectedItems.length < showableItems.length) {
+			setSelectedItems(() => Array.from(showableItems.map((item) => item.id)));
 		} else {
 			setSelectedItems([]);
 		}
