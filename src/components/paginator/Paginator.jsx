@@ -3,7 +3,7 @@ import PageNavigator from "../pageNavigator/PageNavigator";
 import Input from "../input/Input";
 import "./index.css";
 
-const RowGenerator = ({ rowDetails, handleSave }) => {
+const RowGenerator = ({ rowDetails, handleSave, handleDelete }) => {
 	const nameRef = useRef();
 	const emailRef = useRef();
 	const roleRef = useRef();
@@ -38,7 +38,7 @@ const RowGenerator = ({ rowDetails, handleSave }) => {
 				<button onClick={onSave}>
 					<i className="fa fa-floppy-o" aria-hidden="true"></i>
 				</button>
-				<button>
+				<button onClick={() => handleDelete(rowDetails.id)}>
 					<i className="fa fa-trash-o" aria-hidden="true"></i>
 				</button>
 			</td>
@@ -46,7 +46,12 @@ const RowGenerator = ({ rowDetails, handleSave }) => {
 	);
 };
 
-const Paginator = ({ items = [], itemsPerPage = 10, handleSave }) => {
+const Paginator = ({
+	items = [],
+	itemsPerPage = 10,
+	handleSave,
+	handleDelete,
+}) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 	const pages = Math.ceil(items.length / itemsPerPage);
 
@@ -99,7 +104,12 @@ const Paginator = ({ items = [], itemsPerPage = 10, handleSave }) => {
 					</thead>
 					<tbody>
 						{showableItems.map((item) => (
-							<RowGenerator rowDetails={item} key={item.id} handleSave={handleSave} />
+							<RowGenerator
+								rowDetails={item}
+								key={item.id}
+								handleSave={handleSave}
+								handleDelete={handleDelete}
+							/>
 						))}
 					</tbody>
 				</table>
