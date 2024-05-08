@@ -77,7 +77,6 @@ const Paginator = ({
 		setSelectedItems([]);
 	};
 
-	console.log("selected items", selectedItems);
 	const handlePageIndex = (index) => {
 		setSelectedPageIndex(index);
 		resetPage();
@@ -162,7 +161,11 @@ const Paginator = ({
 					</tbody>
 				</table>
 				<div className="tail">
-					<button className="button-delete" disabled={selectedItems.length === 0}>
+					<button
+						className="button-delete"
+						disabled={selectedItems.length === 0}
+						onClick={() => onDelete(...selectedItems)}
+					>
 						Delete Selected
 					</button>
 					<PageNavigator
