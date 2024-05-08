@@ -13,6 +13,7 @@ const RowGenerator = ({
 	const nameRef = useRef();
 	const emailRef = useRef();
 	const roleRef = useRef();
+
 	const onSave = () => {
 		const details = {
 			id: rowDetails.id,
@@ -72,8 +73,13 @@ const Paginator = ({
 		selectedPageIndex * itemsPerPage
 	);
 
+	const resetPage = () => {
+		setSelectedItems([]);
+	};
+
 	const handlePageIndex = (index) => {
 		setSelectedPageIndex(index);
+		resetPage();
 	};
 
 	const handlePageNavigator = (navigatorSpecifier) => {
