@@ -136,7 +136,8 @@ const Paginator = ({
 								<input
 									type="checkbox"
 									checked={
-										selectedItems.length !== 0 && selectedItems.length === items.length
+										selectedItems.length !== 0 &&
+										selectedItems.length === showableItems.length
 									}
 									onChange={handleSelectAll}
 								/>
