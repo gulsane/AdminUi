@@ -10,7 +10,7 @@ const RowGenerator = ({
 	handleEdit,
 	selected,
 	handleSelect,
-	eidtId,
+	editing,
 }) => {
 	const nameRef = useRef();
 	const emailRef = useRef();
@@ -45,7 +45,7 @@ const RowGenerator = ({
 				<Input type="text" value={rowDetails.role} ref={roleRef} />
 			</td>
 			<td>
-				{eidtId === rowDetails.id ? (
+				{editing ? (
 					<button onClick={onSave}>
 						<i className="fa fa-floppy-o" aria-hidden="true"></i>
 					</button>
@@ -178,7 +178,7 @@ const Paginator = ({
 								handleEdit={(id) => {
 									setEditId(id);
 								}}
-								eidtId={eidtId}
+								editing={eidtId === item.id}
 							/>
 						))}
 					</tbody>
