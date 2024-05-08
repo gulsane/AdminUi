@@ -27,7 +27,9 @@ const RowGenerator = ({
 	};
 
 	return (
-		<tr className={`${selected ? "row-selected" : ""}`}>
+		<tr
+			className={`${selected ? "row-selected" : ""} ${editing ? "editing" : ""}`}
+		>
 			<td>
 				<input
 					type="checkbox"

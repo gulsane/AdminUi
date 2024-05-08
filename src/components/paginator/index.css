@@ -22,7 +22,6 @@
 .table td,
 .table th {
     text-align: initial;
-    padding: 8px;
     border-bottom: 1px solid gray;
 }
 
@@ -39,6 +38,10 @@
     background: #f2f0f0;
 }
 
+.table tbody .editing td input {
+    background-color: rgba(231, 108, 168, 0.468);
+}
+
 td input[type="checkbox"],
 th input[type="checkbox"] {
     margin-left: 20px;
@@ -48,6 +51,8 @@ td input {
     border: none;
     text-decoration: none;
     outline: none;
+    padding: 6px;
+    margin: 2px;
     background-color: transparent;
 }
 
