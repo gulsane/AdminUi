@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import PageNavigator from "../pageNavigator/PageNavigator";
 import Input from "../input/Input";
 import "./index.css";
@@ -72,6 +72,12 @@ const Paginator = ({
 		(selectedPageIndex - 1) * itemsPerPage,
 		selectedPageIndex * itemsPerPage
 	);
+
+	useEffect(() => {
+		if (showableItems.length <= 0 && selectedPageIndex > pages) {
+			setSelectedPageIndex((pre) => --pre);
+		}
+	}, [items]);
 
 	const resetPage = () => {
 		setSelectedItems([]);
