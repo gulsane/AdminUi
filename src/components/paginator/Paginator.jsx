@@ -77,6 +77,7 @@ const Paginator = ({
 		setSelectedItems([]);
 	};
 
+	console.log("selected items", selectedItems);
 	const handlePageIndex = (index) => {
 		setSelectedPageIndex(index);
 		resetPage();
@@ -121,6 +122,11 @@ const Paginator = ({
 		}
 	};
 
+	const onDelete = (...id) => {
+		handleDelete(...id);
+		resetPage();
+	};
+
 	return (
 		<>
 			<div className="paginator">
@@ -147,7 +153,7 @@ const Paginator = ({
 								key={item.id}
 								selected={selectedItems.includes(item.id)}
 								handleSave={handleSave}
-								handleDelete={handleDelete}
+								handleDelete={onDelete}
 								handleSelect={handleSelect}
 							/>
 						))}
