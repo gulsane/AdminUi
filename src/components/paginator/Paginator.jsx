@@ -7,8 +7,10 @@ const RowGenerator = ({
 	rowDetails,
 	handleSave,
 	handleDelete,
+	handleEdit,
 	selected,
 	handleSelect,
+	eidtId,
 }) => {
 	const nameRef = useRef();
 	const emailRef = useRef();
@@ -43,12 +45,15 @@ const RowGenerator = ({
 				<Input type="text" value={rowDetails.role} ref={roleRef} />
 			</td>
 			<td>
-				<button>
-					<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-				</button>
-				<button onClick={onSave}>
-					<i className="fa fa-floppy-o" aria-hidden="true"></i>
-				</button>
+				{eidtId === rowDetails.id ? (
+					<button onClick={onSave}>
+						<i className="fa fa-floppy-o" aria-hidden="true"></i>
+					</button>
+				) : (
+					<button onClick={() => handleEdit(rowDetails.id)}>
+						<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+					</button>
+				)}
 				<button onClick={() => handleDelete(rowDetails.id)}>
 					<i className="fa fa-trash-o" aria-hidden="true"></i>
 				</button>
@@ -65,6 +70,7 @@ const Paginator = ({
 }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 	const [selectedItems, setSelectedItems] = useState([]);
+	const [eidtId, setEditId] = useState(null);
 
 	const pages = Math.ceil(items.length / itemsPerPage);
 
@@ -81,6 +87,7 @@ const Paginator = ({
 
 	const resetPage = () => {
 		setSelectedItems([]);
+		setEditId(null);
 	};
 
 	const handlePageIndex = (index) => {
@@ -132,6 +139,11 @@ const Paginator = ({
 		resetPage();
 	};
 
+	const onSave = (details) => {
+		handleSave(details);
+		resetPage();
+	};
+
 	return (
 		<>
 			<div className="paginator">
@@ -160,9 +172,13 @@ const Paginator = ({
 								rowDetails={item}
 								key={item.id}
 								selected={selectedItems.includes(item.id)}
-								handleSave={handleSave}
+								handleSave={onSave}
 								handleDelete={onDelete}
 								handleSelect={handleSelect}
+								handleEdit={(id) => {
+									setEditId(id);
+								}}
+								eidtId={eidtId}
 							/>
 						))}
 					</tbody>
