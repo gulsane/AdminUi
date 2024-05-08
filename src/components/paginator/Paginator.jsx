@@ -3,7 +3,7 @@ import PageNavigator from "../pageNavigator/PageNavigator";
 import Input from "../input/Input";
 import "./index.css";
 
-const RowGenerator = ({ rowDetails, handleSave, handleDelete }) => {
+const RowGenerator = ({ rowDetails, handleSave, handleDelete, selected }) => {
 	const nameRef = useRef();
 	const emailRef = useRef();
 	const roleRef = useRef();
@@ -20,7 +20,7 @@ const RowGenerator = ({ rowDetails, handleSave, handleDelete }) => {
 	return (
 		<tr>
 			<td>
-				<input type="checkbox" />
+				<input type="checkbox" checked={selected} />
 			</td>
 			<td>
 				<Input type="text" value={rowDetails.name} ref={nameRef} />
@@ -53,6 +53,8 @@ const Paginator = ({
 	handleDelete,
 }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
+	const [selectedItems, setSelectedItems] = useState([]);
+
 	const pages = Math.ceil(items.length / itemsPerPage);
 
 	const showableItems = items.slice(
@@ -87,6 +89,20 @@ const Paginator = ({
 		}
 	};
 
+	// const handleSelectAll = () => {
+	// 	if(selectedItems.length<items.length)
+	// 		setSelectedItems(pre=>Array.from(items.map(item=>item.id)))
+	// 	}
+	// };
+
+	const handleSelectAll = () => {
+		if (selectedItems.length < items.length) {
+			setSelectedItems(() => Array.from(items.map((item) => item.id)));
+		} else {
+			setSelectedItems([]);
+		}
+	};
+
 	return (
 		<>
 			<div className="paginator">
@@ -94,7 +110,11 @@ const Paginator = ({
 					<thead className="table-header">
 						<tr>
 							<th>
-								<input type="checkbox" />
+								<input
+									type="checkbox"
+									checked={items[0] && selectedItems.length === items.length}
+									onChange={handleSelectAll}
+								/>
 							</th>
 							<th>Name</th>
 							<th>Email</th>
@@ -107,6 +127,7 @@ const Paginator = ({
 							<RowGenerator
 								rowDetails={item}
 								key={item.id}
+								selected={selectedItems.includes(item.id)}
 								handleSave={handleSave}
 								handleDelete={handleDelete}
 							/>
