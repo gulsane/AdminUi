@@ -148,7 +148,9 @@ const Paginator = ({
 					</tbody>
 				</table>
 				<div className="tail">
-					<button className="button-delete">Delete Selected</button>
+					<button className="button-delete" disabled={selectedItems.length === 0}>
+						Delete Selected
+					</button>
 					<PageNavigator
 						pages={pages}
 						selectedPageIndex={selectedPageIndex}
