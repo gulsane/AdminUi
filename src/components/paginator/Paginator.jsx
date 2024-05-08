@@ -3,7 +3,13 @@ import PageNavigator from "../pageNavigator/PageNavigator";
 import Input from "../input/Input";
 import "./index.css";
 
-const RowGenerator = ({ rowDetails, handleSave, handleDelete, selected }) => {
+const RowGenerator = ({
+	rowDetails,
+	handleSave,
+	handleDelete,
+	selected,
+	handleSelect,
+}) => {
 	const nameRef = useRef();
 	const emailRef = useRef();
 	const roleRef = useRef();
@@ -20,7 +26,11 @@ const RowGenerator = ({ rowDetails, handleSave, handleDelete, selected }) => {
 	return (
 		<tr>
 			<td>
-				<input type="checkbox" checked={selected} />
+				<input
+					type="checkbox"
+					checked={selected}
+					onChange={() => handleSelect(rowDetails.id)}
+				/>
 			</td>
 			<td>
 				<Input type="text" value={rowDetails.name} ref={nameRef} />
@@ -89,17 +99,19 @@ const Paginator = ({
 		}
 	};
 
-	// const handleSelectAll = () => {
-	// 	if(selectedItems.length<items.length)
-	// 		setSelectedItems(pre=>Array.from(items.map(item=>item.id)))
-	// 	}
-	// };
-
 	const handleSelectAll = () => {
 		if (selectedItems.length < items.length) {
 			setSelectedItems(() => Array.from(items.map((item) => item.id)));
 		} else {
 			setSelectedItems([]);
+		}
+	};
+
+	const handleSelect = (id) => {
+		if (selectedItems.includes(id)) {
+			setSelectedItems((pre) => Array.from(pre.filter((preId) => preId !== id)));
+		} else {
+			setSelectedItems((pre) => Array.from([...pre, id]));
 		}
 	};
 
@@ -130,6 +142,7 @@ const Paginator = ({
 								selected={selectedItems.includes(item.id)}
 								handleSave={handleSave}
 								handleDelete={handleDelete}
+								handleSelect={handleSelect}
 							/>
 						))}
 					</tbody>
