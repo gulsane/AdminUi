@@ -2,10 +2,11 @@
     display: flex;
     width: 70vw;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     padding: 10px 0;
     background-color: white;
+    min-height: 435px;
 }
 
 .table {
