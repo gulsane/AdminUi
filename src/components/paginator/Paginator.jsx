@@ -3,10 +3,19 @@ import PageNavigator from "../pageNavigator/PageNavigator";
 import Input from "../input/Input";
 import "./index.css";
 
-const RowGenerator = ({ rowDetails }) => {
+const RowGenerator = ({ rowDetails, handleSave }) => {
 	const nameRef = useRef();
 	const emailRef = useRef();
 	const roleRef = useRef();
+	const onSave = () => {
+		const details = {
+			id: rowDetails.id,
+			name: nameRef.current.value(),
+			email: emailRef.current.value(),
+			role: roleRef.current.value(),
+		};
+		handleSave(details);
+	};
 
 	return (
 		<tr>
@@ -26,7 +35,7 @@ const RowGenerator = ({ rowDetails }) => {
 				<button>
 					<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
 				</button>
-				<button>
+				<button onClick={onSave}>
 					<i className="fa fa-floppy-o" aria-hidden="true"></i>
 				</button>
 				<button>
@@ -37,7 +46,7 @@ const RowGenerator = ({ rowDetails }) => {
 	);
 };
 
-const Paginator = ({ items = [], itemsPerPage = 10 }) => {
+const Paginator = ({ items = [], itemsPerPage = 10, handleSave }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 	const pages = Math.ceil(items.length / itemsPerPage);
 
@@ -90,7 +99,7 @@ const Paginator = ({ items = [], itemsPerPage = 10 }) => {
 					</thead>
 					<tbody>
 						{showableItems.map((item) => (
-							<RowGenerator rowDetails={item} key={item.id} />
+							<RowGenerator rowDetails={item} key={item.id} handleSave={handleSave} />
 						))}
 					</tbody>
 				</table>
