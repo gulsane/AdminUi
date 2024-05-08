@@ -19,10 +19,15 @@
     white-space: nowrap;
 }
 
+.tagle thead tr,
+.table tbody tr {
+    border-bottom: 1px solid gray;
+}
+
 .table td,
 .table th {
     text-align: initial;
-    border-bottom: 1px solid gray;
+
 }
 
 .table th {
@@ -61,6 +66,28 @@ td input {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 6px;
+    gap: 8px;
+}
+
+.action-buttons button {
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.delete {
+    color: red;
+}
+
+.save {
+    color: green;
 }
 
 .button-delete {

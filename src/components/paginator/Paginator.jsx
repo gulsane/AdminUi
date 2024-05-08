@@ -61,17 +61,17 @@ const RowGenerator = ({
 					disabled={!editing}
 				/>
 			</td>
-			<td>
+			<td className="action-buttons">
 				{editing ? (
-					<button onClick={onSave}>
+					<button onClick={onSave} className="save">
 						<i className="fa fa-floppy-o" aria-hidden="true"></i>
 					</button>
 				) : (
-					<button onClick={() => handleEdit(rowDetails.id)}>
+					<button onClick={() => handleEdit(rowDetails.id)} className="edit">
 						<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</button>
 				)}
-				<button onClick={() => handleDelete(rowDetails.id)}>
+				<button onClick={() => handleDelete(rowDetails.id)} className="delete">
 					<i className="fa fa-trash-o" aria-hidden="true"></i>
 				</button>
 			</td>
