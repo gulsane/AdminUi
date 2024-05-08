@@ -49,3 +49,26 @@ td input {
     text-decoration: none;
     outline: none;
 }
+
+.paginator .tail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.button-delete {
+    background-color: rgba(235, 69, 155, 0.981);
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 15px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.button-delete:hover {
+    background-color: rgba(195, 36, 118, 0.981);
+    cursor: pointer;
+}
