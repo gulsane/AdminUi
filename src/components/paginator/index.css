@@ -20,7 +20,7 @@
     white-space: nowrap;
 }
 
-.tagle thead tr,
+.table thead tr,
 .table tbody tr {
     border-bottom: 1px solid gray;
 }
@@ -28,7 +28,6 @@
 .table td,
 .table th {
     text-align: initial;
-
 }
 
 .table th {
@@ -75,6 +74,11 @@ td input {
     justify-content: start;
     margin-top: 6px;
     gap: 8px;
+}
+
+.action-buttons button:hover {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 .action-buttons button {
