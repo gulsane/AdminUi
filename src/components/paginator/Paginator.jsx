@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import PageNavigator from "../pageNavigator/PageNavigator";
 import Input from "../input/Input";
 import "./index.css";
+import SearchBar from "../searchBar/SearchBar";
+import { hasPartialValue } from "../../utils";
 
 const RowGenerator = ({
 	rowDetails,
@@ -88,23 +90,33 @@ const Paginator = ({
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 	const [selectedItems, setSelectedItems] = useState([]);
 	const [eidtId, setEditId] = useState(null);
+	const [serachField, setSearchField] = useState("");
 
-	const pages = Math.ceil(items.length / itemsPerPage);
+	const searchedResult = items.filter((detail) =>
+		hasPartialValue(serachField, detail)
+	);
 
-	const showableItems = items.slice(
+	const pages = Math.ceil(searchedResult.length / itemsPerPage);
+
+	const showableItems = searchedResult.slice(
 		(selectedPageIndex - 1) * itemsPerPage,
 		selectedPageIndex * itemsPerPage
 	);
 
 	useEffect(() => {
-		if (showableItems.length <= 0 && selectedPageIndex > pages) {
-			setSelectedPageIndex((pre) => --pre);
+		if (showableItems.length <= 0) {
+			setSelectedPageIndex(pages);
 		}
-	}, [items]);
+	}, [pages]);
 
 	const resetPage = () => {
 		setSelectedItems([]);
 		setEditId(null);
+	};
+
+	const handleSearch = (searchValue) => {
+		setSearchField(searchValue);
+		setSelectedPageIndex(1);
 	};
 
 	const handlePageIndex = (index) => {
@@ -163,6 +175,7 @@ const Paginator = ({
 
 	return (
 		<>
+			<SearchBar handleSearch={handleSearch} />
 			<div className="paginator">
 				<table className="table">
 					<thead className="table-header">
