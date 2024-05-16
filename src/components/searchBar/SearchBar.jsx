@@ -12,15 +12,20 @@ const SearchBar = ({ handleSearch }) => {
 	};
 
 	return (
-		<div>
+		<div className="searchBar">
 			<Input
 				ref={searchInput}
 				type="text"
 				value=""
+				className="searchBarInput"
 				onKeyDown={handleKeyDown}
-				className="serachBar"
 				placeholder="Search by name, email or role"
 			/>
+			<i
+				className="fa fa-search search-icon"
+				aria-hidden="true"
+				onClick={() => handleSearch(searchInput.current.value().trim())}
+			></i>
 		</div>
 	);
 };
