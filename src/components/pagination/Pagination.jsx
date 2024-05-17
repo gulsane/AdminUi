@@ -1,60 +1,10 @@
 import { useState, useEffect } from "react";
 import PageNavigator from "../pageNavigator/PageNavigator";
 import SearchBar from "../searchBar/SearchBar";
-import RowGenerator from "./RowGenerator";
+import Page from "./Page";
 import "./index.css";
 import { hasPartialValue } from "../../utils";
 import { useAppContext } from "../../context/app";
-
-function Page({
-	selectedItems,
-	eidtId,
-	setEditId,
-	showableItems,
-	handleSelectAll,
-	handleSelect,
-	onDelete,
-	onSave,
-}) {
-	return (
-		<table className="table">
-			<thead className="table-header">
-				<tr>
-					<th>
-						<input
-							type="checkbox"
-							checked={
-								selectedItems.length !== 0 &&
-								selectedItems.length === showableItems.length
-							}
-							onChange={handleSelectAll}
-						/>
-					</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Role</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{showableItems.map((item) => (
-					<RowGenerator
-						rowDetails={item}
-						key={item.id}
-						selected={selectedItems.includes(item.id)}
-						handleSave={onSave}
-						handleDelete={onDelete}
-						handleSelect={handleSelect}
-						handleEdit={(id) => {
-							setEditId(id);
-						}}
-						editing={eidtId === item.id}
-					/>
-				))}
-			</tbody>
-		</table>
-	);
-}
 
 const Pagination = ({ itemsPerPage = 10 }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
