@@ -6,7 +6,7 @@ import "./index.css";
 import { hasPartialValue } from "../../utils";
 import { useAppContext } from "../../context/app";
 
-const Paginator = ({ itemsPerPage = 10 }) => {
+const Pagination = ({ itemsPerPage = 10 }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 	const [selectedItems, setSelectedItems] = useState([]);
 	const [eidtId, setEditId] = useState(null);
@@ -155,4 +155,4 @@ const Paginator = ({ itemsPerPage = 10 }) => {
 	);
 };
 
-export default Paginator;
+export default Pagination;

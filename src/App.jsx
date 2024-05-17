@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Paginator from "./components/paginator/Paginator";
+import Pagination from "./components/pagination/Pagination";
 import data from "./data.json";
 import { AppProvider } from "./context/app";
 
@@ -20,7 +20,7 @@ function App() {
 	return (
 		<>
 			<AppProvider value={{ details, deleteDetails, saveDetails }}>
-				<Paginator itemsPerPage={10} />
+				<Pagination itemsPerPage={10} />
 			</AppProvider>
 		</>
 	);
