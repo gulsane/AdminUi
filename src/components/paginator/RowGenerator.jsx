@@ -1,7 +1,7 @@
-import { useRef } from "react";
 import Input from "../input/Input";
+import { useRef } from "react";
 
-export const RowGenerator = ({
+const RowGenerator = ({
 	rowDetails,
 	handleSave,
 	handleDelete,
@@ -76,3 +76,5 @@ export const RowGenerator = ({
 		</tr>
 	);
 };
+
+export default RowGenerator;

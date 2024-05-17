@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
 import PageNavigator from "../pageNavigator/PageNavigator";
-import "./index.css";
 import SearchBar from "../searchBar/SearchBar";
+import RowGenerator from "./RowGenerator";
+import "./index.css";
 import { hasPartialValue } from "../../utils";
-import { RowGenerator } from "./RowGenerator";
+import { useAppContext } from "../../context/app";
 
-const Paginator = ({
-	items = [],
-	itemsPerPage = 10,
-	handleSave,
-	handleDelete,
-}) => {
+const Paginator = ({ itemsPerPage = 10 }) => {
 	const [selectedPageIndex, setSelectedPageIndex] = useState(1);
 	const [selectedItems, setSelectedItems] = useState([]);
 	const [eidtId, setEditId] = useState(null);
 	const [serachField, setSearchField] = useState("");
 
-	const searchedResult = items.filter((detail) =>
+	const { details, deleteDetails, saveDetails } = useAppContext();
+
+	const searchedResult = details.filter((detail) =>
 		hasPartialValue(serachField, detail)
 	);
 
@@ -88,12 +86,12 @@ const Paginator = ({
 	};
 
 	const onDelete = (...id) => {
-		handleDelete(...id);
+		deleteDetails(...id);
 		resetPage();
 	};
 
 	const onSave = (details) => {
-		handleSave(details);
+		saveDetails(details);
 		resetPage();
 	};
 
